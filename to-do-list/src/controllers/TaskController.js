@@ -16,6 +16,16 @@ class TaskController {
       return res.status(500).send("Erro ao criar a tarefa.");
     }
   };
+
+  getAll = async (req, res) => {
+    try {
+      const tasks = await Task.find();
+      return res.render("index", { tasks });
+    } catch (error) {
+      console.error("Erro ao listar as tarefas:", error);
+      return res.status(500).send("Erro ao listar as tarefas.");
+    }
+  };
 };
 
 export default TaskController;
