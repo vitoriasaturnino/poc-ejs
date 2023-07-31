@@ -14,6 +14,7 @@ app.set("view engine", "ejs");
 app.set('views', path.join(dirname(''), 'src', 'views'));
 
 app.use(express.static(path.join(dirname(''), 'src', 'public')));
+app.use(express.urlencoded());
 app.use(routes);
 
 app.listen(port, () =>
