@@ -9,7 +9,7 @@
 <body>
   <!-- create task form -->
   <form action="/create" method="post">
-    <input type="text" name="task" id="task" placeholder="Descreva a nova tarefa">
+    <input type="text" name="taskDescription" id="task" placeholder="Descreva a nova tarefa">
     <button id="addButton" type="submit">Adicionar</button>
   </form>
 
@@ -17,7 +17,7 @@
   <ul>
     <% tasks.forEach((task) => { %>
       <li>
-        <%= task.task %> | <%= task.date.toLocaleDateString('pt-BR') %>
+        <%= task.taskDescription %> | <%= task.date.toLocaleDateString('pt-BR') %>
       </li>
     <% }) %>
   </ul>

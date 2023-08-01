@@ -4,7 +4,7 @@ class TaskController {
   create = async (req, res) => {
     const task = req.body;
 
-    if(!task.task){
+    if(!task.taskDescription){
       return res.redirect("/");
     }
 

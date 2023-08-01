@@ -1,7 +1,7 @@
 import mongose from 'mongoose';
 
 const taskSchema = new mongose.Schema({
-  task: {
+  taskDescription: {
     type: String,
     required: true,
   },
