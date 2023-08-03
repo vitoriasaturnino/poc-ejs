@@ -45,6 +45,23 @@ class TaskController {
       return res.status(500).send("Erro ao listar as tarefas.");
     }
   };
+
+  update = async (req, res) => {
+    const taskId = req.params.id;
+
+    try {
+      if (!mongoose.Types.ObjectId.isValid(taskId)) {
+        return res.status(400).json({ message: 'ID inválido.' });
+      }
+
+      const task = req.body;
+      await Task.updateOne({_id: taskId}, task);
+      res.redirect("/");
+    } catch (error) {
+      console.error("Erro ao atualizar a tarefa:", error);
+      return res.status(500).send("Erro ao atualizar a tarefa.");
+    }
+  };
 };
 
 export default TaskController;
