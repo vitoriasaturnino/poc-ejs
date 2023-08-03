@@ -36,13 +36,19 @@ class TaskController {
         return res.status(400).json({ message: 'ID inválido.' });
       }
 
-      const task = await Task.findOne({_id: taskId});
-      const tasks = await Task.find();
+      console.log(req.params.method)
 
-      res.render("index", {task, tasks});
+      if (req.params.method == "update" ) {
+        const task = await Task.findOne({ _id: taskId });
+        res.render("index", { task, taskDelete: null, tasks });
+      } else {
+        const taskDelete = await Task.findOne({ _id: taskId });
+        res.render("index", { task: null, tasks, taskDelete });
+      }
+
     } catch (error) {
       console.error("Erro ao listar as tarefas:", error);
-      return res.status(500).send("Erro ao listar as tarefas.");
+      return res.status(500).send("Erro ao encontrar a tarefa.");
     }
   };
 
@@ -59,7 +65,7 @@ class TaskController {
       res.redirect("/");
     } catch (error) {
       console.error("Erro ao atualizar a tarefa:", error);
-      return res.status(500).send("Erro ao atualizar a tarefa.");
+      return res.status(500).send("Erro ao exclir a tarefa.");
     }
   };
 };

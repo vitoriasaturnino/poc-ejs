@@ -28,13 +28,26 @@
       <% tasks.forEach((task) => { %>
         <li>
           <%= task.taskDescription %> | <%= task.date.toLocaleDateString('pt-BR') %>
-          <a href="/find-by-id/<%= task._id %>">Editar</a>
-          <!-- <a href="">Apagar</a> -->
+          <a href="/find-by-id/<%= task._id %>/update">Editar</a>
+          <a href="/find-by-id/<%= task._id %>/delete">Apagar</a>
         </li>
       <% }) %>
     </ul>
   </section>
 
+  <% if (taskDelete != null) { %>
+    <section id="modal">
+      <div id="card">
+        <a href="/">x</a>
+        <h2>Confirmação</h2>
+        <hr>
+        <p> Deseja realmente excluir a task: "<%= taskDelete.task %>?" </p>
+        <a href="/">Não</a>
+        <a href="/delete/<%= delete._id %>">Sim</a>
+      </div>
+    </section>
+  <% } %>
+ 
   <script src="/script.js"></script>
 </body>
 </html>
