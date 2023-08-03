@@ -10,10 +10,11 @@ connectToDb();
 const app = express();
 const port = process.env.PORT || 3001;
 
-app.set("view engine", "ejs");
-app.set('views', path.join(dirname(''), 'src', 'views'));
+app.use(express.static(path.join(dirname(''), './src/public')));
 
-app.use(express.static(path.join(dirname(''), 'src', 'public')));
+app.set('views', path.join(dirname(''), './src/views'));
+app.set("view engine", "ejs");
+
 app.use(express.urlencoded());
 app.use(routes);
 

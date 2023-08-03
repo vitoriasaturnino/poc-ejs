@@ -3,25 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel='stylesheet' href='style.css'>
+  <link rel='stylesheet' href='/style.css'>
   <title>To Do List</title>
 </head>
 <body>
   <!-- create task form -->
-  <form action="/" method="post">
-    <input type="text" name="taskDescription" id="task" placeholder="Descreva a nova tarefa">
-    <button id="addButton" type="submit">Adicionar</button>
-  </form>
+  <header>
+    <% if (task == null) { %>
+      <form action="/create" method="post">
+        <input type="text" name="taskDescription" id="task" placeholder="Descreva a nova tarefa">
+        <button id="addButton" type="submit">Adicionar</button>
+      </form>
+    <% } else { %>
+      <form action="/" method="post">
+        <input type="text" name="taskDescription" id="task" value="<%= task.taskDescription %>" >
+        <button id="addButton" type="submit">Atualizar</button>
+      </form>
+    <% } %>
+  </header>
 
   <!-- getAll tasks loop -->
-  <ul>
-    <% tasks.forEach((task) => { %>
-      <li>
-        <%= task.taskDescription %> | <%= task.date.toLocaleDateString('pt-BR') %>
-      </li>
-    <% }) %>
-  </ul>
+  <section id="tasks">
+    <ul>
+      <% tasks.forEach((task) => { %>
+        <li>
+          <%= task.taskDescription %> | <%= task.date.toLocaleDateString('pt-BR') %>
+          <a href="/find-by-id/<%= task._id %>">Editar</a>
+          <!-- <a href="">Apagar</a> -->
+        </li>
+      <% }) %>
+    </ul>
+  </section>
 
-  <script src="script.js"></script>
+  <script src="/script.js"></script>
 </body>
 </html>
