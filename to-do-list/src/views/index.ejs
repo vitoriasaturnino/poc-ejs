@@ -38,16 +38,16 @@
   <% if (taskDelete != null) { %>
     <section id="modal">
       <div id="card">
-        <a href="/">x</a>
-        <h2>Confirmação</h2>
+        <a href="/"> x </a>
+        <h2> Confirmacao </h2>
         <hr>
-        <p> Deseja realmente excluir a task: "<%= taskDelete.task %>?" </p>
-        <a href="/">Não</a>
-        <a href="/delete/<%= delete._id %>">Sim</a>
+        <p> Deseja realmente excluir a task: " <%= taskDelete.taskDescription %> "</p>
+        <a href="/" > Nao </a>
+        <a href="/delete-task/<%= taskDelete._id %>"> Sim </a>
       </div>
     </section>
   <% } %>
- 
+
   <script src="/script.js"></script>
 </body>
 </html>

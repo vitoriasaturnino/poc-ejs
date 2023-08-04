@@ -21,7 +21,7 @@ class TaskController {
   getAll = async (req, res) => {
     try {
       const tasks = await Task.find();
-      return res.render("index", { tasks, task: null });
+      return res.render("index", { tasks, task: null, taskDelete: null });
     } catch (error) {
       console.error("Erro ao listar as tarefas:", error);
       return res.status(500).send("Erro ao listar as tarefas.");
@@ -30,22 +30,20 @@ class TaskController {
 
   findById = async (req, res) => {
     const taskId = req.params.id;
+    const tasks = await Task.find();
 
     try {
       if (!mongoose.Types.ObjectId.isValid(taskId)) {
         return res.status(400).json({ message: 'ID inválido.' });
       }
 
-      console.log(req.params.method)
-
-      if (req.params.method == "update" ) {
-        const task = await Task.findOne({ _id: taskId });
+      if (req.params.method == "update") {
+        const task = await Task.findOne({_id: taskId});
         res.render("index", { task, taskDelete: null, tasks });
       } else {
         const taskDelete = await Task.findOne({ _id: taskId });
-        res.render("index", { task: null, tasks, taskDelete });
+        res.render("index", { task: null, taskDelete, tasks });
       }
-
     } catch (error) {
       console.error("Erro ao listar as tarefas:", error);
       return res.status(500).send("Erro ao encontrar a tarefa.");
@@ -66,6 +64,18 @@ class TaskController {
     } catch (error) {
       console.error("Erro ao atualizar a tarefa:", error);
       return res.status(500).send("Erro ao exclir a tarefa.");
+    }
+  };
+
+  deleteTask = async (req, res) => {
+    const taskId = req.params.id;
+
+    try {
+      await Task.deleteOne({ _id: taskId });
+      res.redirect("/");
+    } catch (error) {
+      console.error("Erro ao excluir a tarefa:", error);
+      return res.status(500).send("Erro ao excluir a tarefa.");
     }
   };
 };

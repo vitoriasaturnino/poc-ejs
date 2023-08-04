@@ -7,6 +7,6 @@ routes.post('/create', new TaskController().create);
 routes.get('/', new TaskController().getAll);
 routes.get('/find-by-id/:id/:method', new TaskController().findById);
 routes.post('/update/:id', new TaskController().update);
-// routes.post('/delete/:id', new TaskController().delete);
+routes.get('/delete-task/:id', new TaskController().deleteTask);
 
 export default routes;
