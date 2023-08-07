@@ -78,6 +78,7 @@ ul li a {
   text-decoration: none;
   color: #ffffff;
   font-size: 1.3rem;
+  padding-left: 3rem;
 }
 
 ul li span{
@@ -222,6 +223,8 @@ div#buttons a#yesButton:hover {
   color: #ffffff;
 }
 
+/* ux messages */
+
 .message {
   padding: 1rem;
   position: sticky;
@@ -256,4 +259,36 @@ span#closeMessage {
 span#closeMessage:hover {
   transition: all .3s ease-in-out;
   color: #000000;
+}
+
+/* check for tasks */
+
+ul li.check-true {
+  background-color: #767575;
+  color: #ffffff;
+  text-decoration: line-through;
+
+}
+
+ul li a.check-true::before {
+  content: '';
+  position: absolute;
+  border: #ffffff solid;
+  top: 17px;
+  left: 16px;
+  height: 15px;
+  width: 7px;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+ul li a.check-false::before {
+  content: '';
+  position: absolute;
+  border: #ffffff solid;
+  top: 18px;
+  left: 16px;
+  height: 16px;
+  width: 16px;
+  border-width: 2px;
 }

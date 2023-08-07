@@ -103,6 +103,22 @@ class TaskController {
       return res.status(500).send("Erro ao excluir a tarefa.");
     }
   };
+
+  taskCheck = async (req, res) => {
+    const taskId = req.params.id;
+    const task = await Task.findOne({_id: taskId});
+
+    try {
+      task.check ? task.check = false : task.check = true;
+
+      await Task.updateOne({ _id: taskId }, task);
+
+      res.redirect("/");
+    } catch (error) {
+      console.error("Erro ao marcar como feito.", error);
+      return res.status(500).send("Erro ao marcar como feito.");
+    }
+  };
 };
 
 export default TaskController;
