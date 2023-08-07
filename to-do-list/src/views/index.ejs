@@ -9,7 +9,7 @@
 </head>
 <body>
   <% if (message != "") { %>
-    <%- include('./components/AlertMessage.ejs', {message: message, type: type}) %>
+    <%- include('./components/alertMessage.ejs', {message: message, type: type}) %>
   <% } %>
 
   <header>
@@ -32,20 +32,10 @@
     <% } %>
   </header>
 
-  <!-- getAll tasks loop -->
   <section id="tasks">
     <ul>
       <% tasks.forEach((task) => { %>
-        <li class="check-<%= task.check %>">
-          <div>
-            <a href="/task-check/<%= task._id %>" class="check-<%= task.check %>"> <%= task.taskDescription %> </a>
-            <span> Criado em <%= task.date.toLocaleDateString('pt-BR') %> </span>
-          </div>
-          <div>
-            <a class="updateButton" href="/find-by-id/<%= task._id %>/update"> <i class="bi bi-pencil-square"></i> </i></a>
-            <a class="deleteButton" href="/find-by-id/<%= task._id %>/delete"> <i <i class="bi bi-x-circle"></i> </a>
-          </div>
-        </li>
+        <%- include('./components/tasks.ejs', {task: task}) %>
       <% }) %>
     </ul>
   </section>
