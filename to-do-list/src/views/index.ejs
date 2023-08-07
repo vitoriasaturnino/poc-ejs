@@ -9,16 +9,12 @@
 </head>
 <body>
   <% if (message != "") { %>
-  <section class="message message-<%= type %>">
-    <p> <%= message %> </p>
-    <span id="closeMessage"> <i class="bi bi-x-lg"></i> </span>
-  </section>
+    <%- include('./components/AlertMessage.ejs', {message: message, type: type}) %>
   <% } %>
 
-  <!-- create task form -->
   <header>
     <% if (task == null) { %>
-      <%- include('./components/form',{
+      <%- include('./components/form', {
         titleForm: "Nova Tarefa",
         action: "create",
         value: "",
