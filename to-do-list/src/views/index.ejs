@@ -18,17 +18,21 @@
   <!-- create task form -->
   <header>
     <% if (task == null) { %>
-      <h1>TO DO LIST</h1>
-      <form action="/create" method="post">
-        <input type="text" name="taskDescription" id="task" placeholder="Descreva a nova tarefa">
-        <button id="addButton" type="submit">Adicionar</button>
-      </form>
+      <%- include('./components/form',{
+        titleForm: "Nova Tarefa",
+        action: "create",
+        value: "",
+        idButton: "addButton",
+        valueButton: "Adicionar"
+      }) %>
     <% } else { %>
-      <h1>Editar Tarefa</h1>
-      <form action="/update/<%= task._id %>" method="post">
-        <input type="text" name="taskDescription" id="task" value="<%= task.taskDescription %>" >
-        <button id="updateButton" type="submit">Atualizar</button>
-      </form>
+      <%- include('./components/form', {
+        titleForm: "Editar Tarefa",
+        action: `update/${task._id}`,
+        value: task.taskDescription,
+        idButton: "updateButton",
+        valueButton: "Atualizar"
+      }) %>
     <% } %>
   </header>
 
