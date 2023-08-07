@@ -8,6 +8,13 @@
   <title>To Do List</title>
 </head>
 <body>
+  <% if (message != "") { %>
+  <section class="message message-<%= type %>">
+    <p> <%= message %> </p>
+    <span id="closeMessage"> <i class="bi bi-x-lg"></i> </span>
+  </section>
+  <% } %>
+
   <!-- create task form -->
   <header>
     <% if (task == null) { %>
