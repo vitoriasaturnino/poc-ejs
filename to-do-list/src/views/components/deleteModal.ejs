@@ -1,0 +1,14 @@
+<section id="modal">
+  <div id="card">
+    <div id="head">
+      <h2> Confirmacao </h2>
+      <a id="closeButton" href="/"> <i class="bi bi-x-lg"></i> </a>
+    </div>
+    <hr>
+    <p> Deseja realmente excluir a task: "<%= task.taskDescription %>"</p>
+    <div id="buttons">
+      <a id="notButton" href="/" > Não </a>
+      <a id="yesButton" href="/delete-task/<%= task._id %>"> Sim </a>
+    </div>
+  </div>
+</section>

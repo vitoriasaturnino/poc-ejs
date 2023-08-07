@@ -51,20 +51,7 @@
   </section>
 
   <% if (taskDelete != null) { %>
-    <section id="modal">
-      <div id="card">
-        <div id="head">
-          <h2> Confirmacao </h2>
-          <a id="closeButton" href="/"> <i class="bi bi-x-lg"></i> </a>
-        </div>
-        <hr>
-        <p> Deseja realmente excluir a task: "<%= taskDelete.taskDescription %>"</p>
-        <div id="buttons">
-          <a id="notButton" href="/" > Não </a>
-          <a id="yesButton" href="/delete-task/<%= taskDelete._id %>"> Sim </a>
-        </div>
-      </div>
-    </section>
+    <%- include('./components/deleteModal.ejs', {task: taskDelete}) %>
   <% } %>
 
   <script src="/script.js"></script>
