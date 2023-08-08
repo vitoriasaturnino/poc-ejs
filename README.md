@@ -26,7 +26,7 @@ Project created to improve componentization abilities with EJS.
 
 #
 
-[Screencast from 08-08-2023 10:38:55.webm](https://github.com/vitoriasaturnino/poc-ejs/assets/68754092/d9d94526-2e93-47f2-93a7-2916d4e1eb65)
+[Screencast from 08-08-2023 10:38:55.webm](https://github.com/vitoriasaturnino/poc-ejs/assets/68754092/054e217c-dbf8-40be-97e7-f69636601790)
 
 #
 
