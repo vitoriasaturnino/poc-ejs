@@ -17,13 +17,16 @@ Project created to improve componentization abilities with EJS.
 ## Prerequisites
 
 - Docker >= 20.10.20
-
 #
 
 ## Setup
 
 - Run `docker build -t to-do-list .` on Dockerfile path to build the docker image;
 - then `docker run -p 3000:3000 to-do-list` to run the container from the created image.
+
+#
+
+[Screencast from 08-08-2023 10:38:55.webm](https://github.com/vitoriasaturnino/poc-ejs/assets/68754092/d9d94526-2e93-47f2-93a7-2916d4e1eb65)
 
 #
 
